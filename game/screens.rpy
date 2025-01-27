@@ -97,6 +97,8 @@ style frame:
 
 screen say(who, what):
 
+    $ print(what)
+
     window:
         id "window"
 

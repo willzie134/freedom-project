@@ -1,32 +1,38 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 213, in script
-    python hide:
-  File "renpy/common/00start.rpy", line 213, in <module>
-    python hide:
-  File "renpy/common/00start.rpy", line 214, in _execute_python_hide
-    renpy.warp.warp()
-Exception: Could not find a statement to warp to. (script.rpy:4)
+  File "game/script.rpy", line 31, in script
+    e "You've created a new Ren'Py game Wowah."
+  File "game/logic/voice_logic.rpy", line 17, in play_typing_sound
+    renpy.play(typing_sound, "sound", loop=True)
+TypeError: renpy.audio.music.play() got multiple values for keyword argument 'loop'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 213, in script
-    python hide:
-  File "c:\Ren'py\renpy-8.3.4-sdk\renpy\ast.py", line 827, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "c:\Ren'py\renpy-8.3.4-sdk\renpy\python.py", line 1178, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00start.rpy", line 213, in <module>
-    python hide:
-  File "renpy/common/00start.rpy", line 214, in _execute_python_hide
-    renpy.warp.warp()
-  File "c:\Ren'py\renpy-8.3.4-sdk\renpy\warp.py", line 147, in warp
-    raise Exception("Could not find a statement to warp to. ({})".format(spec))
-Exception: Could not find a statement to warp to. (script.rpy:4)
+  File "game/script.rpy", line 31, in script
+    e "You've created a new Ren'Py game Wowah."
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\ast.py", line 2579, in execute
+    Say.execute(self)
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\ast.py", line 621, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\exports\sayexports.py", line 132, in say
+    who(what, *args, **kwargs)
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 1455, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 1106, in do_display
+    display_say(who,
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 797, in display_say
+    pause_callback("show_done")
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 91, in __call__
+    c(*args, **kwargs)
+  File "game/logic/voice_logic.rpy", line 17, in play_typing_sound
+    renpy.play(typing_sound, "sound", loop=True)
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\exports\mediaexports.py", line 126, in play
+    renpy.audio.music.play(filename, channel=channel, loop=False, **kwargs)
+TypeError: renpy.audio.music.play() got multiple values for keyword argument 'loop'
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.3.4.24120703
 Freedom Project 1.0
-Sun Jan 26 15:09:33 2025
+Sun Jan 26 22:29:41 2025
