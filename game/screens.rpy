@@ -97,8 +97,6 @@ style frame:
 
 screen say(who, what):
 
-    $ print(what)
-
     window:
         id "window"
 
@@ -108,7 +106,7 @@ screen say(who, what):
                 id "namebox"
                 style "namebox"
                 text who id "who"
-
+    
         text what id "what"
 
 
@@ -289,12 +287,19 @@ style quick_button_text:
 screen navigation():
 
     vbox:
-        style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        if renpy.get_screen("main_menu"):
+            xpos 30
+            ypos 386
+            spacing 24
+            style_prefix "home_navigation"
 
-        spacing gui.navigation_spacing
+        else:
+            xpos gui.navigation_xpos
+            yalign 0.5
+
+            spacing gui.navigation_spacing
+            style_prefix "navigation"
 
         if main_menu:
 
@@ -342,6 +347,16 @@ style navigation_button:
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
 
+style home_navigation_button is gui_button
+style home_navigation_button_text is gui_button_text
+
+style home_navigation_button:
+    size_group "navigation"
+    properties gui.button_properties("home_navigation_button")
+
+style home_navigation_button_text:
+    properties gui.text_properties("home_navigation_button")
+
 
 ## Main Menu screen ############################################################
 ##
@@ -355,24 +370,27 @@ screen main_menu():
     tag menu
 
     add gui.main_menu_background
-
-    ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
+    add "gui/overlay/main_menu.png"
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+    frame:
+        style "main_menu_frame"
+        xpos 1360
+        xpadding 30
+        xsize 320
+        yfill True
+        use navigation
 
-    if gui.show_name:
-
+        vbox:
+            yoffset 192
+            xalign 0.5
+            add "gui/title.png"
+        
         vbox:
             style "main_menu_vbox"
 
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
+            text "version [config.version]":
                 style "main_menu_version"
 
 
@@ -382,26 +400,29 @@ style main_menu_text is gui_text
 style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
 
-style main_menu_frame:
-    xsize 420
-    yfill True
+# style main_menu_frame:
+#     xsize 420
+#     yfill True
 
-    background "gui/overlay/main_menu.png"
+#     background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
+    ypos 981
+    xpadding 10
+    ypadding 10
+    xalign 0.5
+    xfill True
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
 
-style main_menu_title:
-    properties gui.text_properties("title")
+# style main_menu_title:
+#     properties gui.text_properties("title")
 
 style main_menu_version:
+    color "#BBBBBB"
+    size 24
+    xalign 0.5
     properties gui.text_properties("version")
 
 

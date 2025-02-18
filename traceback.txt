@@ -1,17 +1,23 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 31, in script
-    e "You've created a new Ren'Py game Wowah."
-  File "game/logic/voice_logic.rpy", line 17, in play_typing_sound
-    renpy.play(typing_sound, "sound", loop=True)
-TypeError: renpy.audio.music.play() got multiple values for keyword argument 'loop'
+  File "game/script.rpy", line 13, in script call
+    call prologue
+  File "game/chapters/prologue.rpy", line 9, in script call
+    call scene_1_2
+  File "game/chapters/prologue.rpy", line 141, in script
+    sp_adh "The stench of salt and sweat clung to the air."
+TypeError: got an unexpected keyword argument 'two_window'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 31, in script
-    e "You've created a new Ren'Py game Wowah."
+  File "game/script.rpy", line 13, in script call
+    call prologue
+  File "game/chapters/prologue.rpy", line 9, in script call
+    call scene_1_2
+  File "game/chapters/prologue.rpy", line 141, in script
+    sp_adh "The stench of salt and sweat clung to the air."
   File "C:\Renpy\renpy-8.3.4-sdk\renpy\ast.py", line 2579, in execute
     Say.execute(self)
   File "C:\Renpy\renpy-8.3.4-sdk\renpy\ast.py", line 621, in execute
@@ -22,17 +28,19 @@ Full traceback:
     self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
   File "C:\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 1106, in do_display
     display_say(who,
-  File "C:\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 797, in display_say
-    pause_callback("show_done")
-  File "C:\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 91, in __call__
-    c(*args, **kwargs)
-  File "game/logic/voice_logic.rpy", line 17, in play_typing_sound
-    renpy.play(typing_sound, "sound", loop=True)
-  File "C:\Renpy\renpy-8.3.4-sdk\renpy\exports\mediaexports.py", line 126, in play
-    renpy.audio.music.play(filename, channel=channel, loop=False, **kwargs)
-TypeError: renpy.audio.music.play() got multiple values for keyword argument 'loop'
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 749, in display_say
+    what_text = renpy.display.screen.get_widget(what_text[0], what_text[1], what_text[2])
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\display\screen.py", line 1538, in get_displayable
+    screen.update()
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\display\screen.py", line 697, in update
+    self.screen.function(**self.scope)
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "C:\Renpy\renpy-8.3.4-sdk\renpy\parameter.py", line 384, in apply
+    raise TypeError(
+TypeError: got an unexpected keyword argument 'two_window'
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.3.4.24120703
 Freedom Project 1.0
-Sun Jan 26 22:29:41 2025
+Tue Feb 18 10:04:46 2025

@@ -2,23 +2,9 @@
 errors listed below, and try again.
 
 
-The label prologue is defined twice, at File "game/chapters/prologue.rpyc", line 1:
-
-and File "game/chapters/prologus.rpy", line 1:
-label prologue:
-
-
-The label scene_1 is defined twice, at File "game/chapters/prologue.rpyc", line 7:
-
-and File "game/chapters/prologus.rpy", line 7:
-label scene_1:
-
-
-The label scene_2 is defined twice, at File "game/chapters/prologue.rpyc", line 12:
-
-and File "game/chapters/prologus.rpy", line 12:
-label scene_2:
-
+File "game/screens.rpy", line 112: 'alpha' is not a keyword argument or valid child of the text statement.
+    alpha 0.75
+         ^
 
 Ren'Py Version: Ren'Py 8.3.4.24120703
-Mon Jan 27 15:56:09 2025
+Tue Feb 18 10:44:07 2025
